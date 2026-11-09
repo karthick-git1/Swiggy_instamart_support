@@ -158,3 +158,56 @@ for _, row in tickets.iterrows():
 
 print("Tickets processed:", len(results))
 print("Transient errors recovered by retry:", total_retries)
+
+#Validate every answer
+
+import json
+import re
+
+ALLOWED_CATEGORIES = {"billing", "delivery", "technical", "fraud"}
+
+def parse_reply(text):
+    # Valid JSON is accepted only if it has an allowed category.
+    try:
+        payload = json.loads(text)
+    except (json.JSONDecodeError, TypeError):
+        payload = None
+        valid_json = False
+    else:
+        valid_json = True
+
+    if valid_json:
+        if (
+            isinstance(payload, dict)
+            and payload.get("category") in ALLOWED_CATEGORIES
+        ):
+            return {
+                "category": payload["category"],
+                "reason": payload.get("reason", ""),
+                "status": "classified_json",
+            }
+
+        # Valid JSON, but category is missing or not allowed: never guess.
+        return {
+            "category": None,
+            "reason": "",
+            "status": "flagged_invalid_output",
+        }
+
+    # Non-JSON reply: use word extraction so "billing-related" yields "billing".
+    words = re.findall(r"[a-z]+", text.lower())
+    category_words = [word for word in words if word in ALLOWED_CATEGORIES]
+
+    if len(category_words) == 1:
+        return {
+            "category": category_words[0],
+            "reason": "Category extracted from non-JSON reply.",
+            "status": "classified_keyword",
+        }
+
+    return {
+        "category": None,
+        "reason": "",
+        "status": "flagged_invalid_output",
+    }
+

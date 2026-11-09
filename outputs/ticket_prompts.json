@@ -1,0 +1,4 @@
+{
+  "zero_shot": "CLASSIFY the customer's support ticket into exactly one allowed category: billing, delivery, technical, fraud. Return a JSON-only reply of the form {\"category\": \"...\", \"reason\": \"...\"}. The category must be one of the four allowed categories.",
+  "few_shot": "CLASSIFY the customer's support ticket into exactly one allowed category: billing, delivery, technical, fraud. Return a JSON-only reply of the form {\"category\": \"...\", \"reason\": \"...\"}. The category must be one of the four allowed categories.\nEXAMPLES:\nTicket: I was charged twice for one order.\nJSON: {\"category\": \"billing\", \"reason\": \"The customer reports a duplicate charge.\"}\nTicket: Someone made an unauthorized transaction on my card.\nJSON: {\"category\": \"fraud\", \"reason\": \"The customer reports an unauthorized transaction.\"}"
+}

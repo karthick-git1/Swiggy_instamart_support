@@ -13,4 +13,27 @@ Reproduce:
 4.	(.venv) PS D:\Karthick\Masai\Projects\Swiggy_instamart_support> python .\generate_data.py
 generated: customers=1200 products=40 orders_raw=13084 tickets=164
 
+5.	 Audit the raw data
+(.venv) PS D:\Karthick\Masai\Projects\Swiggy_instamart_support> python .\part_a_audit_raw_data.py 
+
+6.	Clean customers
+
+(.venv) PS D:\Karthick\Masai\Projects\Swiggy_instamart_support> python .\part_a_clean_customers.py
+
+7.	Clean orders
+(.venv) PS D:\Karthick\Masai\Projects\Swiggy_instamart_support> python .\part_a_clean_orders.py
+
+
+8.	Store and validate:
+(.venv) PS D:\Karthick\Masai\Projects\Swiggy_instamart_support> python .\part_a_store_validate.py
+
+9.	SQL analysis
+(.venv) PS D:\Karthick\Masai\Projects\Swiggy_instamart_support> python .\part_a_run_queries.py
+
+10.	pandas cross-check and exploratory analysis
+(.venv) PS D:\Karthick\Masai\Projects\Swiggy_instamart_support> python .\part_a_pandas_eda.py
+
+Part B — Customer Segments and Lapse Prediction
+
+(.venv) PS D:\Karthick\Masai\Projects\Swiggy_instamart_support> python .\part_b.py
 
