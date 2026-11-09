@@ -1,0 +1,30 @@
+{
+  "run_id": "demo_timeout",
+  "scenario_id": "S1_TIMEOUT",
+  "messages": [
+    {
+      "role": "system",
+      "content": "AGENT. Resolve refund requests with the available tools. Check order status, retrieve relevant policy, calculate refunds, issue amounts up to INR 1000, and escalate larger amounts. Never refund cancelled or missing orders. Use no more than six reasoning/tool iterations."
+    },
+    {
+      "role": "user",
+      "content": "My order ORD-100048 reached me very late. I would like a refund."
+    }
+  ],
+  "tokens_used": 0,
+  "step_number": 0,
+  "tools_executed": [],
+  "steps": [],
+  "llm_calls": 0,
+  "max_iterations": 6,
+  "token_limit": 6000,
+  "time_limit_seconds": 0,
+  "elapsed_seconds": 0.0,
+  "last_result": {
+    "status": "FALLBACK_TIMEOUT",
+    "final_answer": "FALLBACK_TIMEOUT: The automated time limit was reached. Please hand this request to a human support agent.",
+    "steps": [],
+    "llm_calls": 0,
+    "tokens_used": 0
+  }
+}
